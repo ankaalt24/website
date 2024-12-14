@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ucapan Ulang Tahun</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .page {
+            display: none;
+            padding: 20px;
+            margin: auto;
+            max-width: 600px;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        #noButton {
+            position: absolute;
+            transition: all 0.3s ease;
+        }
+
+        #nextPageButton {
+        display: none;
+        margin-top: 20px;
+        }
+
+        .visible {
+            display: block;
+        }
+
+        h1, p {
+            font-size: 36px;
+            color: #2c3e50;
+            animation: moveIn 1s ease-out forwards;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+        p {
+            font-size: 20px;
+            color: #7f8c8d;
+        }
+
+        button {
+            background-color: #2980b9;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #3498db;
+        }
+
+        input, textarea {
+            width: 250px;
+            height: 40px;
+            font-size: 16px;
+            text-align: center;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 80%;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #3498db;
+        }
+
+        .confetti {
+            display: block;
+            font-size: 30px;
+            color: #e74c3c;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Animasi teks */
+        .animated-text {
+            font-size: 32px;
+            font-weight: bold;
+            animation: textAnimation 6s;
+        }
+
+        @keyframes textAnimation {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            25% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            50% {
+                opacity: 1;
+            }
+            75% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .checklist {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: flex-start; /* Membuat elemen lebih teratur */
+            margin: 20px 0;
+        }
+        
+        .checklist label {
+            display: flex;
+            align-items: center;
+            gap: 3px; /* Memberikan jarak antara checkbox dan teks */
+            font-size: 12px;
+            color: #34495e;
+        }
+        
+        .checklist input {
+            transform: scale(1); /* Memperbesar ukuran checkbox */
+            margin: 0; /* Menghilangkan margin default pada checkbox */
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Audio Background -->
+    <audio autoplay loop>
+        <source src="c:\Users\ASUS\Desktop\BirthdayWebsite\nhac-jazz-thu-gian-265063.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Halaman 1: Masukkan Kode Rahasia untuk Memulai -->
+    <div class="page" id="page1">
+        <h1>Masukkan Kode Rahasia</h1>
+        <input type="password" id="codeInput" placeholder="masukkan tanggal ngab" />
+        <button id="checkCodeButton">Submit</button>
+        <p id="errorMessage" style="color: red; display: none;">Wah Parah Ga ingat😡🤬😠</p>
+    </div>
+
+    <!-- Halaman 2: Ucapan Selamat Ulang Tahun dan Semangat -->
+    <div class="page" id="page2">
+        <h1 class="animated-text" id="message1">Selamat Ulang Tahun, Dika Cintaku yang paling special! 🎂🎉 Gak ada yang lebih indah dari hari ini, karena kamu jadi lebih tua, lebih keren, dan pastinya lebih cakep! 😍💖</h1>
+        <h1 class="animated-text" id="message2">Waktunya rayain hari bahagia kamuu bub! MWAHHH😘💫</h1>
+        <div class="confetti">🎉🎈🎉</div>
+        <button id="nextPage2Button">Lanjutkan</button>
+    </div>
+
+    <!-- Halaman 3: Memulai Perjalanan dengan Motivasi -->
+    <div class="page" id="page3">
+        <h1>Motivasi untuk KAMOEH!</h1>
+        <p>"Ulang tahun itu bukan cuma soal nambah umur, tapi juga nambah pengalaman, kebijaksanaan, dan cinta. Terus maju ya, dunia di luar sana nunggu kamu buat bersinar lebih terang lagi!
+
+            💖💕❤️😍😘🌹💑✨💞💋💌🥰🌸"</p>
+        <button id="nextPage3Button">Lanjutkan</button>
+    </div>
+
+    <!-- Halaman 4: Game “Tebak Tujuan Hidup” dengan Ceklis -->
+    <div class="page" id="page4">
+        <h1>🤔APASI YANG JADI TUJUAN UTAMA DALAM HIDUP KAMU🧐</h1>
+        <p>silahkan diceklis lur</p>
+        <div class="checklist">
+            <div style="font-size: 12px;">
+                <label><input type="checkbox" id="goal1" /> Sukses dalam Karir</label><br>
+                <label><input type="checkbox" id="goal2" /> Hidup Sehat dan Bugar</label><br>
+                <label><input type="checkbox" id="goal3" /> Memiliki Keluarga Bahagia</label><br>
+                <label><input type="checkbox" id="goal4" /> Stabilitas Keuangan</label><br>
+                <label><input type="checkbox" id="goal5" /> Mencapai Kebebasan Finansial</label><br>
+                <label><input type="checkbox" id="goal6" /> Membantu Sesama dan Berbagi</label><br>
+                <label><input type="checkbox" id="goal7" /> Memiliki Rumah Impian</label><br>
+                <label><input type="checkbox" id="goal8" /> Menjadi Pribadi yang Lebih Baik</label><br>
+                <label><input type="checkbox" id="goal9" /> Meningkatkan Keimanan dan Spiritualitas</label><br>
+                <label><input type="checkbox" id="goal10" /> Menikmati Kehidupan dan Kebahagiaan</label><br>
+                <label><input type="checkbox" id="goal11" /> Menjaga Hubungan Baik dengan Orang Tersayang</label><br>
+                <label><input type="checkbox" id="goal12" /> Mencapai Impian atau Cita-cita</label><br>
+                <label><input type="checkbox" id="goal13" /> Belajar dan Mengembangkan Diri</label><br>
+                <label><input type="checkbox" id="goal14" /> Menjelajahi Dunia</label><br>
+                <label><input type="checkbox" id="goal15" /> Meninggalkan Warisan Positif</label><br>
+            </div>
+            
+        </div>
+        
+        <button id="confirmGoalButton">Yakin?</button>
+        <p id="goalMessage" style="color: green; display: none;">Terus jalani hidupmu dengan tujuan!🚀🌟</p>
+        <button id="nextPage4Button" style="display: none;">Lanjutkan</button>
+    </div>
+
+    <!-- Halaman 5: Pemilihan Jalan Kehidupan dengan Ceklis -->
+    <div class="page" id="page5">
+        <h1>BAGAIMANA KAMU INGIN MENJALANI HIDUP KAMU TAHUN INI😎</h1>
+        <p>Ceklis juga cuy</p>
+        <div class="checklist-container">
+            <div class="checklist">
+                <div style="font-size: 12px;">
+                    <label><input type="checkbox" id="path1" /> Gaya Hidup Sehat</label><br>
+                    <label><input type="checkbox" id="path2" /> Karir Sukses</label><br>
+                    <label><input type="checkbox" id="path3" /> Kebahagiaan Keluarga</label><br>
+                    <label><input type="checkbox" id="path4" /> Peningkatan Keuangan</label><br>
+                    <label><input type="checkbox" id="path5" /> Pengembangan Diri</label><br>
+                    <label><input type="checkbox" id="path6" /> Membangun Hubungan Positif</label><br>
+                    <label><input type="checkbox" id="path7" /> Menyelesaikan Tujuan Pribadi</label><br>
+                    <label><input type="checkbox" id="path8" /> Menjadi Lebih Kreatif</label><br>
+                    <label><input type="checkbox" id="path9" /> Memulai Bisnis Sendiri</label><br>
+                    <label><input type="checkbox" id="path10" /> Meningkatkan Kualitas Hidup</label><br>
+                    <label><input type="checkbox" id="path11" /> Menjaga Kesehatan Mental</label><br>
+                    <label><input type="checkbox" id="path12" /> Mengelola Waktu dengan Baik</label><br>
+                    <label><input type="checkbox" id="path13" /> Menjadi Pemimpin</label><br>
+                    <label><input type="checkbox" id="path14" /> Menikmati Hidup Lebih Banyak</label><br>
+                    <label><input type="checkbox" id="path15" /> Belajar dari Pengalaman</label><br>
+                    <label><input type="checkbox" id="path16" /> Membantu Orang Lain</label><br>
+                    <label><input type="checkbox" id="path17" /> Membuat Kenangan Indah</label><br>
+                    <label><input type="checkbox" id="path18" /> Mengeksplorasi Tempat Baru</label><br>
+                    <label><input type="checkbox" id="path19" /> Berinvestasi untuk Masa Depan</label><br>
+                    <label><input type="checkbox" id="path20" /> Meningkatkan Spiritualitas</label><br>
+                </div>
+            </div>
+            <button id="confirmPathButton">Yakin?</button>
+            <p id="pathMessage" style="color: green; display: none;">Keputusan keren! Semoga jalan yang kamu pilih bawa kebahagiaan dan semangat yang nggak ada habisnya! 🚀💥</p>
+            <button id="nextPage5Button" style="display: none;">Lanjutkan</button>
+        </div>
+    </div>
+
+    <!-- Halaman 6: "What’s Your Next Step?" -->
+    <div class="page" id="page6">
+        <h1>Apa Langkah Berikutnya?</h1>
+        <textarea id="goalInput" placeholder="Tuliskan tujuanmu disini"></textarea>
+        <button id="submitGoalButton">Kirim Tujuanmu Om</button>
+    </div>
+
+  <!-- Halaman 7: Uji Pengetahuan -->
+<div class="page" id="page7">
+    <h1>Uji Pengetahuan: Sebutkan 1 Nama Perempuan</h1>
+    <input type="text" id="nameInput" placeholder="Masukkan Nama Perempuan">
+    <button onclick="checkTrivia()">Ente yakin?</button>
+    <p id="triviaResult" style="color: green; display: none;">Nyeh!</p>
+    <p id="triviaResultIncorrect" style="color: red; display: none;">Yang Benar Aja. Oh Gitu Ya🙄</p>
+    <button id="nextPage7Button" style="display: none;">Lanjutkan Bre</button>
+</div>
+
+<!-- Halaman 8: Pernyataan Cinta -->
+<div class="page" id="page8">
+    <h1>DO YOU LOVE ME?😍</h1>
+    <button onclick="answerYes()">YES</button>
+    <button id="noButton" onmouseover="moveNoButton()" onclick="answerNo()">NO</button>
+    <p id="resultMessage" style="color: green; display: none;">AAHHKKKK MAKASI CAYAANKKK💋💌🥰</p>
+    <button id="nextPageButton" style="display: none;" onclick="nextPage()">Lanjutkan lurr</button>
+</div>
+
+    <!-- Halaman 9: Ucapan Terima Kasih -->
+    <div class="page" id="page9">
+        <h1>Terima Kasih!</h1>
+        <p>Sayangggg, terima kasih banget ya udah jadi bagian penting dalam hidup aku 🥰. Aku bener-bener nggak bisa bayangin hidup tanpa kamu di sisi aku. Setiap hari bareng kamu, walaupun kita jauh, rasanya tuh kayak ada energi positif yang ngeliputin aku terus 😌✨. Kamu nggak cuma pacar, tapi juga sahabat terbaik aku, partner in crime yang selalu ada buat aku dalam segala hal, baik itu seneng-seneng atau pas lagi susah 👫💖. Kita udah lewatin banyak banget momen seru bareng, dan banyak hal juga yang bikin kita makin deket satu sama lain 💫. Setiap momen bareng kamu tuh nggak ada yang sia-sia, semuanya penuh kebahagiaan, tawa, dan cinta yang nggak bisa digambarin dengan kata-kata 😍💕
+
+            Aku merasa beruntung banget bisa punya kamu, kamu tuh lebih dari apa yang aku bayangin, Sayang 😘. Kamu adalah hadiah terbaik yang pernah aku terima 🎁💎. Aku percaya banget, kita berdua bisa terus berkembang bareng, saling support, saling ngingetin, dan meraih semua mimpi kita yang belum kesampean 🌈💫. Semoga perjalanan cinta kita makin kuat, makin dewasa, dan makin indah setiap harinya 💖🌹. Aku sayang banget sama kamu, lebih dari kata-kata bisa ungkapin 💕🥺. Nggak sabar nungguin perjalanan kita ke depan, penuh kebahagiaan, cinta, dan tawa! 😘💖💌 Kita bakal terus bahagia bareng, dan aku nggak akan pernah berhenti mencintaimu 🥰💑</p>
+        <button id="nextPage9Button">Lanjutkan Bre</button>
+    </div>
+
+    <!-- Halaman 10: Doa untuk Masa Depan -->
+    <div class="page" id="page10">
+        <h1>Untuk Masa Depan Kita</h1>
+        <p>💖Semoga hidup kita selalu dipenuhi dengan kebahagiaan yang tak terhingga 😍, kesehatan yang sempurna 💪, dan kesuksesan yang luar biasa 🌟! Aku berdoa agar Tuhan selalu melindungi kita 🙏, memberi kekuatan di setiap langkah kita 💫, dan memberikan rezeki yang melimpah 💸✨, baik dalam pekerjaan 💼, keuangan 💰, dan kehidupan kita bersama 🌈. Semoga kita selalu diberkahi dengan kebahagiaan yang tulus 😘, dan terus diberi kesempatan untuk menjadi versi terbaik dari diri kita sendiri 😎! Aku juga berdoa agar kita bisa terus saling mendukung 💑, semakin sayang dan peduli satu sama lain 💞, dan makin cinta sama diri sendiri 💕 supaya kita makin sehat 🏋️‍♀️, makin keren 😎, makin ganteng/cantik 😍, dan makin sukses bersama 🏆. Semoga Tuhan selalu memberi kita jalan yang terang, penuh dengan berkah 🌟, kasih sayang 💖, dan kelimpahan dalam segala hal yang kita impikan ✨. Semoga kita selalu diberikan kelancaran dan kebahagiaan yang melimpah, hari demi hari, tahun demi tahun 🗓️💫. Aku cinta banget sama kamu, lebih dari yang bisa diungkapkan dengan kata-kata 🥰💖
+
+            I love you so much, Sayang 💘, dan Happy Birthday 🎉🎂! Semoga hari ini jadi awal yang indah untuk perjalanan hidupmu yang semakin luar biasa! 🥳💖</p>
+        <div class="confetti">✨🌟🎉</div>
+    </div>
+
+    <script>
+        // Halaman 1 - Masukkan Kode Rahasia
+        const codeInput = document.getElementById('codeInput');
+        const checkCodeButton = document.getElementById('checkCodeButton');
+        const errorMessage = document.getElementById('errorMessage');
+        const page1 = document.getElementById('page1');
+        const page2 = document.getElementById('page2');
+
+        checkCodeButton.addEventListener('click', () => {
+            if (codeInput.value === '050519') {
+                page1.classList.remove('visible');
+                page2.classList.add('visible');
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        });
+
+        // Halaman 2 - Ucapan Ulang Tahun
+        const nextPage2Button = document.getElementById('nextPage2Button');
+        const page3 = document.getElementById('page3');
+        nextPage2Button.addEventListener('click', () => {
+            page2.classList.remove('visible');
+            page3.classList.add('visible');
+        });
+
+        // Halaman 3 - Motivasi
+        const nextPage3Button = document.getElementById('nextPage3Button');
+        const page4 = document.getElementById('page4');
+        nextPage3Button.addEventListener('click', () => {
+            page3.classList.remove('visible');
+            page4.classList.add('visible');
+        });
+
+        // Halaman 4 - "Tebak Tujuan Hidup"
+        const confirmGoalButton = document.getElementById('confirmGoalButton');
+        const goalMessage = document.getElementById('goalMessage');
+        const nextPage4Button = document.getElementById('nextPage4Button');
+
+        confirmGoalButton.addEventListener('click', () => {
+            goalMessage.style.display = 'block';
+            nextPage4Button.style.display = 'block';
+        });
+
+        nextPage4Button.addEventListener('click', () => {
+            page4.classList.remove('visible');
+            page5.classList.add('visible');
+        });
+
+        // Halaman 5 - Pemilihan Jalur Kehidupan
+        const confirmPathButton = document.getElementById('confirmPathButton');
+        const pathMessage = document.getElementById('pathMessage');
+        const nextPage5Button = document.getElementById('nextPage5Button');
+
+        confirmPathButton.addEventListener('click', () => {
+            pathMessage.style.display = 'block';
+            nextPage5Button.style.display = 'block';
+        });
+
+        nextPage5Button.addEventListener('click', () => {
+            page5.classList.remove('visible');
+            page6.classList.add('visible');
+        });
+
+        // Halaman 6 - "What’s Your Next Step?"
+        const submitGoalButton = document.getElementById('submitGoalButton');
+        const goalInput = document.getElementById('goalInput');
+        const page7 = document.getElementById('page7');
+        submitGoalButton.addEventListener('click', () => {
+            alert(`Tujuanmu: ${goalInput.value}`);
+            page6.classList.remove('visible');
+            page7.classList.add('visible');
+        });
+
+     // Halaman 7 - Trivia
+     function checkTrivia() {
+        const nameInput = document.getElementById('nameInput');
+        const triviaResult = document.getElementById('triviaResult');
+        const triviaResultIncorrect = document.getElementById('triviaResultIncorrect');
+        const nextPage7Button = document.getElementById('nextPage7Button');
+    
+        // Mengubah input menjadi huruf kecil untuk perbandingan yang tidak peka terhadap kapitalisasi dan menghilangkan spasi
+        if (nameInput.value.trim().toLowerCase() === 'sachi' || nameInput.value.trim().toLowerCase() === 'sachita') {
+            triviaResult.style.display = 'block';
+            triviaResultIncorrect.style.display = 'none';
+            nextPage7Button.style.display = 'block'; // Menampilkan tombol untuk lanjut
+        } else {
+            triviaResult.style.display = 'none';
+            triviaResultIncorrect.style.display = 'block';
+        }
+    }
+
+// Navigasi untuk Halaman 7 (Lanjutkan Bre)
+const nextPage7Button = document.getElementById('nextPage7Button');
+nextPage7Button.addEventListener('click', () => {
+    page7.classList.remove('visible');
+    page8.classList.add('visible');
+});
+
+// Halaman 8 - Game "Pernyataan Cinta"
+let noButton = document.getElementById("noButton");
+let resultMessage = document.getElementById("resultMessage");
+let nextPageButton = document.getElementById("nextPageButton");
+
+function answerYes() {
+    resultMessage.style.display = "block";
+    nextPageButton.style.display = "block";
+}
+
+function answerNo() {
+    alert("Ups! Jawaban yang benar adalah YES.");
+}
+
+function moveNoButton() {
+    let maxX = window.innerWidth - noButton.offsetWidth;
+    let maxY = window.innerHeight - noButton.offsetHeight;
+
+    let randomX = Math.random() * maxX;
+    let randomY = Math.random() * maxY;
+    noButton.style.left = randomX + "px";
+    noButton.style.top = randomY + "px";
+}
+// Navigasi untuk Halaman 8 (Lanjutkan ke Halaman 9)
+nextPageButton.addEventListener('click', () => {
+    page8.classList.remove('visible');
+    page9.classList.add('visible');
+});
+
+        // Halaman 9 - Terima Kasih
+        const nextPage9Button = document.getElementById('nextPage9Button');
+        const page10 = document.getElementById('page10');
+        nextPage9Button.addEventListener('click', () => {
+            page9.classList.remove('visible');
+            page10.classList.add('visible');
+        });
+
+        // Mulai Halaman 1
+        page1.classList.add('visible');
+    </script>
+
+</body>
+</html>
